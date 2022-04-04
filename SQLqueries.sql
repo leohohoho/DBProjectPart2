@@ -6,18 +6,18 @@
 -- part a
 select * 
 from flight 
-WHERE departure_date_time > CURDATE(); 
+where departure_date_time > CURDATE(); 
 
 -- part b
 select * 
 from flight 
-WHERE status = "delayed";
+where status = "delayed";
 
 -- part c
 select name 
-FROM customer NATURAL JOIN purchase;
+from customer natural join purchase;
 
 -- part d
 select ID 
-FROM airplane 
-WHERE airline_name = "China Eastern";
+from airplane 
+where airline_name = "China Eastern";
