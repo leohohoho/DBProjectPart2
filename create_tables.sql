@@ -1,3 +1,8 @@
+-- Leo Ho - lmh575
+-- Sanidhya Sitaula - ss12801
+
+-- Part 2 Section 2
+
 create table airport(
     code		varchar(10),
     name		varchar(256),
@@ -28,9 +33,9 @@ create table airplane(
 
 
 create table flight(
+    flight_num		varchar(10),
     airplane_ID		varchar(10),
     airline_name		varchar(256),
-    flight_num		varchar(10),
     base_price		numeric(10,0),
     status			varchar(20) check (status in ('delayed', 'on time')),
     departure_date_time	DATETIME,
@@ -50,8 +55,8 @@ create table flight(
 	);
 
 create table customer(
-    name			varchar(50),
     email			varchar(50),
+    name			varchar(50),
     password		varchar(20),
     building_number		varchar(20),
     street			varchar(20),
