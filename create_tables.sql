@@ -27,7 +27,7 @@ create table airplane(
 	 
     primary key (ID),
     foreign key (airline_name) references airline(name)
-        on update cascade on delete cascade
+        on delete cascade on update cascade
 	);
 
 
@@ -38,20 +38,20 @@ create table flight(
     airline_name		varchar(256),
     base_price		numeric(10,0),
     status			varchar(20) check (status in ('delayed', 'on time')),
-    departure_date_time	DATETIME,
+    departure_datetime	DATETIME,
     departure_airport_code	varchar(10),
-    arrival_date_time	DATETIME,
+    arrival_datetime	DATETIME,
     arrival_airport_code 	varchar(10),
 
-    primary key (flight_num, departure_date_time),
-    foreign key (airline_name) references airline(name)
-        on update cascade on delete cascade,
+    primary key (flight_num, departure_datetime),
     foreign key (airplane_ID) references airplane(ID)
-        on update cascade on delete cascade,
+        on delete cascade on update cascade,
+    foreign key (airline_name) references airline(name)
+        on delete cascade on update cascade, 
     foreign key (departure_airport_code) references airport(code)
-        on update cascade on delete cascade,
+        on delete cascade on update cascade,
     foreign key (arrival_airport_code) references airport(code)
-        on update cascade on delete cascade
+        on delete cascade on update cascade
 	);
 
 create table customer(
@@ -76,23 +76,23 @@ create table ticket(
     airplane_ID		varchar(10),
     airline_name		varchar(256),
     flight_num		varchar(10),
-    departure_date_time	DATETIME,
+    departure_datetime	DATETIME,
     sold_price		numeric(10,0),
     card_number		numeric(12,0),
     name_on_card		varchar(50),
     card_type		varchar(10) check (card_type in ('Credit', 'Debit')),
     expiration_date DATE,
-    purchase_date_time	DATETIME,
+    purchase_datetime	DATETIME,
 
     primary key (ID_num),
     foreign key (email) references customer(email)
-        on update cascade on delete cascade,
+        on delete cascade on update cascade,
+        foreign key (airplane_ID) references airplane(ID)
+        on delete cascade on update cascade,
     foreign key (airline_name) references airline(name)
-        on update cascade on delete cascade,
-    foreign key (airplane_ID) references airplane(ID)
-        on update cascade on delete cascade,
-    foreign key (flight_num, departure_date_time) references flight(flight_num, departure_date_time)
-        on update cascade on delete cascade
+        on delete cascade on update cascade,
+    foreign key (flight_num, departure_datetime) references flight(flight_num, departure_datetime)
+        on delete cascade on update cascade
 	);
 	 
 
@@ -106,7 +106,7 @@ create table airline_staff(
 
     primary key (username),
     foreign key (airline_name) references airline(airline_name)
-        on update cascade on delete cascade
+        on delete cascade on update cascade
 	);
 
 create table staff_phone(
@@ -114,7 +114,7 @@ create table staff_phone(
     phone_number		numeric(10,0),
     primary key (phone_number),
     foreign key (username) references airline_staff(username)
-        on update cascade on delete cascade
+        on delete cascade on update cascade
 	);
 
 
@@ -123,9 +123,9 @@ create table purchase(
     ticket_ID		varchar(10),
     email			varchar(50),
     foreign key (ticket_ID) references ticket(ID_num)
-        on update cascade on delete cascade,
+        on delete cascade on update cascade,
     foreign key (email) references customer(email)
-        on update cascade on delete cascade
+        on delete cascade on update cascade
 	);
 
 create table rate(
@@ -134,7 +134,7 @@ create table rate(
     rating			numeric(1,0),
     comment		varchar(1000),
     foreign key (flight_num) references flight(flight_num)
-        on update cascade on delete cascade,
+        on delete cascade on update cascade,
     foreign key (email) references customer(email)
-        on update cascade on delete cascade
+        on delete cascade on update cascade
 	);
