@@ -5,7 +5,7 @@
 
 create table airport(
     code		varchar(10),
-    name		varchar(256),
+    name		varchar(100),
     city		varchar(20),
     country		varchar(20),
     airport_type		varchar(20),
@@ -14,13 +14,13 @@ create table airport(
 	);
 
 create table airline(
-    name		varchar(256),
+    name		varchar(100),
 	primary key (name)
 	);
 
 create table airplane(
     ID		varchar(10),
-    airline_name		varchar(256),
+    airline_name		varchar(100),
     num_seats		numeric(3,0),
     manufacturer		varchar(20),
     age		numeric(2,0),
@@ -35,7 +35,7 @@ create table airplane(
 create table flight(
     flight_num		varchar(10),
     airplane_ID		varchar(10),
-    airline_name		varchar(256),
+    airline_name		varchar(100),
     base_price		numeric(10,0),
     status			varchar(20) check (status in ('delayed', 'on time')),
     departure_datetime	DATETIME,
@@ -74,7 +74,7 @@ create table ticket(
     ID_num		varchar(10),
     email			varchar(50),
     airplane_ID		varchar(10),
-    airline_name		varchar(256),
+    airline_name		varchar(100),
     flight_num		varchar(10),
     departure_datetime	DATETIME,
     sold_price		numeric(10,0),
@@ -98,7 +98,7 @@ create table ticket(
 
 create table airline_staff(  
     username		varchar(20),
-    airline_name		varchar(256),
+    airline_name		varchar(100),
     password		varchar(50),
     first_name		varchar(20),
     last_name		varchar(20),
