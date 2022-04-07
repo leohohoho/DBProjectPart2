@@ -1,3 +1,8 @@
+-- Leo Ho - lmh575
+-- Sanidhya Sitaula - ss12801
+
+-- Part 2 Section 3
+
 INSERT INTO airline(name) VALUES ("China Eastern");
 
 INSERT INTO airport(code, name, city, country, airport_type) VALUES 
