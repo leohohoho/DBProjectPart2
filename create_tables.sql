@@ -105,7 +105,7 @@ create table airline_staff(
     date_of_birth		DATE,
 
     primary key (username),
-    foreign key (airline_name) references airline(airline_name)
+    foreign key (airline_name) references airline(name)
         on delete cascade on update cascade
 	);
 
