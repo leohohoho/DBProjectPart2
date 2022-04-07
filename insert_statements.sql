@@ -32,4 +32,4 @@ INSERT INTO purchase (ticket_ID, email) VALUES
     (1, 'janedoe@gmail.com'),
     (2, 'johndoe@gmail.com');
 
-INSERT INTO staff_phone (username, phone_number) VALUES (leomessi, 3472312832); 
+INSERT INTO staff_phone (username, phone_number) VALUES ("leomessi", 3472312832); 
